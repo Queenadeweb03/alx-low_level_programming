@@ -1,40 +1,18 @@
 #include "main.h"
 
 /**
- * create_array - array for prints a string
- * @size: number elements array
- * @c: char
- * Return: pointer
+ * malloc_checked - allocates memory using malloc.
+ * @b: the memory size
+ *
+ * Return: a pointer to the allocated memory
  */
-
-char *create_array(unsigned int size, char c)
+void *malloc_checked(unsigned int b)
 {
-	char *buffer;
-	unsigned int position;
+	void *memory;
 
-	if (size == 0)
-	{
-		return (NULL);
-	}
+	memory = malloc(b);
+	if (memory == NULL)
+		exit(98);
 
-	/*Define values with malloc*/
-	buffer = (char *) malloc(size * sizeof(c));
-
-	if (buffer == 0)
-	{
-		return (NULL);
-	}
-
-	else
-	{
-		position = 0;
-		while (position < size) /*While for array*/
-		{
-			*(buffer + position) = c;
-			position++;
-		}
-
-		return (buffer);
-		}
-
+	return (memory);
 }
